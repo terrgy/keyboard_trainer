@@ -24,6 +24,11 @@ class ResultsScene(BaseScene):
             grid={'row': 0, 'column': 1}
         ))
 
+        self.objects.append(Object(
+            ttk.Button(text="Back to menu", font=self.font, command=self.return_to_menu),
+            grid={'row': 5, 'column': 0}
+        ))
+
     def create_stats(self):
         index = 0
         for stat in self.level_statistics.stats_names:
@@ -42,3 +47,6 @@ class ResultsScene(BaseScene):
         self.heatmap_text.set("Mistakes heatmap:\n{}"
                               .format('\n'.join(self.level_statistics.mistakes_heatmap.make_list())))
         self.show_all_objects()
+
+    def return_to_menu(self):
+        self.app.set_scene(self.app.SCENE_MENU)
