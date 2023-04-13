@@ -18,12 +18,9 @@ class MenuScene(BaseScene):
         ))
 
         self.objects.append(Object(
-            ttk.Button(self.app, text="Exit", command=self.exit, font=("Arial", 20)),
+            ttk.Button(self.app, text="Exit", command=self.app.exit, font=("Arial", 20)),
             pack={"pady": 10},
         ))
 
     def start_train(self):
         self.app.set_scene(self.app.SCENE_TRAIN)
-
-    def exit(self):
-        pass

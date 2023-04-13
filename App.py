@@ -24,6 +24,8 @@ class App(ttk.Tk):
             y=int((self.winfo_screenheight() - self.height) / 2)
         ))
 
+        self.title("Keyboard Trainer")
+
         self.scenes = [
             MenuScene(self),
             TrainScene(self),
@@ -36,3 +38,6 @@ class App(ttk.Tk):
         self.scenes[self.current_scene_index].on_deactivate()
         self.current_scene_index = index
         self.scenes[self.current_scene_index].on_activate(*args, **kwargs)
+
+    def exit(self):
+        self.destroy()
