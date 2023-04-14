@@ -5,6 +5,7 @@ from scenes.LevelSelection import LevelSelectionScene
 from scenes.Menu import MenuScene
 from scenes.Results import ResultsScene
 from scenes.Train import TrainScene
+from statistics.StatisticsManager import StatisticsManager
 
 
 class App(ttk.Tk):
@@ -30,6 +31,7 @@ class App(ttk.Tk):
         self.title("Keyboard Trainer")
 
         self.levels_manager = LevelsManager()
+        self.statistics_manager = StatisticsManager()
 
         self.scenes = [
             MenuScene(self),

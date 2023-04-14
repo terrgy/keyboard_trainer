@@ -1,5 +1,6 @@
 from statistics.MistakesHeatmap import MistakesHeatmap
 import tkinter as ttk
+import json
 
 
 class LevelStatistics:
@@ -47,3 +48,27 @@ class LevelStatistics:
         self.text_len += 1
         self.mistakes += 1
         self.mistakes_heatmap.add_mistake(char)
+
+    def to_json_dict(self):
+        dct = {
+            'text_len': self.text_len,
+            'mistakes': self.mistakes,
+            'mistakes_heatmap': self.mistakes_heatmap.to_json_dict(),
+            'elapsed_time': self.elapsed_time,
+            'is_finished': self.is_finished,
+            'level_name': self.level_name,
+            '__class__': 'LevelStatistics',
+        }
+        return dct
+
+    @staticmethod
+    def from_json(json_dict):
+        if json_dict.get('__class__', None) != 'LevelStatistics':
+            return json_dict
+
+        res = LevelStatistics()
+        heatmap = json_dict.pop('mistakes_heatmap')
+        json_dict.pop('__class__')
+        res.__dict__.update(json_dict)
+        res.mistakes_heatmap = MistakesHeatmap.from_json(heatmap)
+        return res

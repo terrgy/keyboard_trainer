@@ -191,6 +191,7 @@ class TrainScene(BaseScene):
 
     def exit_train(self, event):
         if self.is_train_started:
+            self.app.statistics_manager.add_level_statistics(self.level_statistics)
             self.app.set_scene(self.app.SCENE_RESULTS, self.level_statistics)
         else:
             self.app.set_scene(self.app.SCENE_MENU)
