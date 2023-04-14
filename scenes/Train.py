@@ -60,7 +60,7 @@ class TrainScene(BaseScene):
     def __init__(self, app):
         super().__init__(app)
 
-        self.current_text = ""
+        self.current_level = None
         self.current_text_pos = 0
 
         self.is_train_started = False
@@ -77,8 +77,6 @@ class TrainScene(BaseScene):
             ttk.Label(text="Press Enter to start", font=("Arial", self.MAIN_FONT_SIZE))
         )
         self.objects.append(self.start_label)
-
-        self.app.bind('<Escape>', self.exit_train)
 
     def create_stats(self):
         for c in range(3):
@@ -130,14 +128,14 @@ class TrainScene(BaseScene):
         self.objects.extend(self.letters)
 
     def get_next_char(self):
-        if self.current_text_pos >= len(self.current_text):
+        if self.current_text_pos >= len(self.current_level.text):
             return ''
-        res = self.current_text[self.current_text_pos]
+        res = self.current_level.text[self.current_text_pos]
         self.current_text_pos += 1
         return res
 
-    def configure_level(self, text):
-        self.current_text = text
+    def configure_level(self, level_name):
+        self.current_level = self.app.levels_manager.get_level(level_name)
         self.current_text_pos = 0
 
         for i in range(self.TYPE_LETTERS_LEFT_COUNT):
@@ -147,6 +145,7 @@ class TrainScene(BaseScene):
             self.letters_settings[i].status = self.LetterLabelSettings.Statuses.NORMAL
 
         self.level_statistics = LevelStatistics()
+        self.level_statistics.level_name = level_name
         self.level_statistics.create_str_vars()
 
         for key in self.stats.keys():
@@ -156,6 +155,7 @@ class TrainScene(BaseScene):
         self.configure_level(text)
         self.start_label.show()
         self.app.bind("<Return>", self.start_train)
+        self.app.bind('<Escape>', self.exit_train)
 
     def start_train(self, event):
         self.app.unbind("<Return>")

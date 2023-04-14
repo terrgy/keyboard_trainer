@@ -23,4 +23,4 @@ class MenuScene(BaseScene):
         ))
 
     def start_train(self):
-        self.app.set_scene(self.app.SCENE_TRAIN)
+        self.app.set_scene(self.app.SCENE_LEVEL_SELECTION)

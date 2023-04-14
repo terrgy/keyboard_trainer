@@ -1,5 +1,7 @@
 import tkinter as ttk
 
+from levels_manager.LevelsManager import LevelsManager
+from scenes.LevelSelection import LevelSelectionScene
 from scenes.Menu import MenuScene
 from scenes.Results import ResultsScene
 from scenes.Train import TrainScene
@@ -10,6 +12,7 @@ class App(ttk.Tk):
     SCENE_MENU = 0
     SCENE_TRAIN = 1
     SCENE_RESULTS = 2
+    SCENE_LEVEL_SELECTION = 3
     current_scene_index = SCENE_MENU
 
     def __init__(self):
@@ -26,10 +29,13 @@ class App(ttk.Tk):
 
         self.title("Keyboard Trainer")
 
+        self.levels_manager = LevelsManager()
+
         self.scenes = [
             MenuScene(self),
             TrainScene(self),
             ResultsScene(self),
+            LevelSelectionScene(self),
         ]
 
         self.scenes[self.current_scene_index].on_activate()
