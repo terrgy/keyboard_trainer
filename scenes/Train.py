@@ -74,7 +74,7 @@ class TrainScene(BaseScene):
         self.create_stats()
 
         self.start_label = Object(
-            ttk.Label(text="Press Enter to start", font=("Arial", self.MAIN_FONT_SIZE))
+            ttk.Label(text="Press Enter to start\nPress Escape to exit", font=("Arial", self.MAIN_FONT_SIZE))
         )
         self.objects.append(self.start_label)
 
