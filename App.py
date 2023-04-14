@@ -4,6 +4,7 @@ from levels_manager.LevelsManager import LevelsManager
 from scenes.LevelSelection import LevelSelectionScene
 from scenes.Menu import MenuScene
 from scenes.Results import ResultsScene
+from scenes.StatisticsScene import StatisticsScene
 from scenes.Train import TrainScene
 from statistics.StatisticsManager import StatisticsManager
 
@@ -14,6 +15,7 @@ class App(ttk.Tk):
     SCENE_TRAIN = 1
     SCENE_RESULTS = 2
     SCENE_LEVEL_SELECTION = 3
+    SCENE_STATISTICS = 4
     current_scene_index = SCENE_MENU
 
     def __init__(self):
@@ -38,6 +40,7 @@ class App(ttk.Tk):
             TrainScene(self),
             ResultsScene(self),
             LevelSelectionScene(self),
+            StatisticsScene(self),
         ]
 
         self.scenes[self.current_scene_index].on_activate()

@@ -35,3 +35,6 @@ class StatisticsManager:
         with open(self.STATISTICS_FILE, 'w') as f:
             json_lst = [stat.to_json_dict() for stat in self.stats]
             f.write(json.dumps(json_lst))
+
+    def get_stats_count(self):
+        return len(self.stats)

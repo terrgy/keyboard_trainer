@@ -51,6 +51,7 @@ class ResultsScene(BaseScene):
 
     def on_activate(self, level_statistics: LevelStatistics):
         self.level_statistics = level_statistics
+        self.level_statistics.create_str_vars()
         for key in self.stats.keys():
             self.stats[key].obj.configure(textvariable=self.level_statistics.stats_str_vars[key])
         self.heatmap_text.set("Mistakes heatmap:\n{}"

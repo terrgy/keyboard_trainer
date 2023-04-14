@@ -18,8 +18,9 @@ class LevelStatistics:
         self.stats_str_vars = dict()
 
     def create_str_vars(self):
-        for stat in self.stats_names:
-            self.stats_str_vars[stat] = ttk.StringVar()
+        if not self.stats_str_vars:
+            for stat in self.stats_names:
+                self.stats_str_vars[stat] = ttk.StringVar()
         self.update_str_vars()
 
     def update_str_vars(self):
