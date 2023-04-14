@@ -5,7 +5,7 @@ import tkinter as ttk
 
 class LevelSelectionScene(BaseScene):
     MAIN_FONT_SIZE = 30
-    GRID_COLUMNS = 5
+    GRID_COLUMNS = 3
 
     def __init__(self, app):
         super().__init__(app)
