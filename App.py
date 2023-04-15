@@ -1,6 +1,7 @@
 import tkinter as ttk
 
 from levels_manager.LevelsManager import LevelsManager
+from scenes.GeneralHeatmapScene import GeneralHeatmapScene
 from scenes.LevelSelection import LevelSelectionScene
 from scenes.Menu import MenuScene
 from scenes.Results import ResultsScene
@@ -16,6 +17,7 @@ class App(ttk.Tk):
     SCENE_RESULTS = 2
     SCENE_LEVEL_SELECTION = 3
     SCENE_STATISTICS = 4
+    SCENE_GENERAL_HEATMAP = 5
     current_scene_index = SCENE_MENU
 
     def __init__(self):
@@ -41,6 +43,7 @@ class App(ttk.Tk):
             ResultsScene(self),
             LevelSelectionScene(self),
             StatisticsScene(self),
+            GeneralHeatmapScene(self),
         ]
 
         self.scenes[self.current_scene_index].on_activate()

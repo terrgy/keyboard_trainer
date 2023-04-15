@@ -36,3 +36,11 @@ class MistakesHeatmap:
         res = MistakesHeatmap()
         res.__dict__.update(json_dict)
         return res
+
+    def __add__(self, other):
+        res = MistakesHeatmap()
+        res.hits = self.hits
+        for char, count in other.hits.items():
+            res.hits.setdefault(char, 0)
+            res.hits[char] += count
+        return res
