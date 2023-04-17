@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,linux,pycharm+all,venv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,linux,pycharm+all,venv
 
+# Statistics file
+statistics.json
+
 ### Linux ###
 *~
 
